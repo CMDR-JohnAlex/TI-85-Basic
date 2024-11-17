@@ -1,0 +1,15 @@
+/*
+Do not include this text, there are no comments in TI-85 BASIC.
+
+This program "LOOP" just adds 1 to a variable constantly and
+outputs the value. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...
+
+I typed this program up and used → as the character for the
+button that looks like "STO⊳"
+*/
+
+0→i
+Lbl START
+i+1→i
+Disp i
+Goto START

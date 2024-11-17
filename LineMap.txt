@@ -1,0 +1,22 @@
+/*
+Do not include this text, there are no comments in TI-85 BASIC.
+
+This program "LineMap" just does some linear mapping.
+Gets your inputs, shows you the function, displays the result
+and displays a graph of the function.
+*/
+
+ClLCD
+Disp "Linear Mapping"
+
+Disp "Minimum"
+Input mn
+Disp "Maxiumum"
+Input mx
+Disp "Value( decimal)"
+Input value
+Disp "(max-min)*value+min"
+Disp (mx-mn)*value+min
+Pause
+y99=(mx-mn)*(x/100)+min
+DispG

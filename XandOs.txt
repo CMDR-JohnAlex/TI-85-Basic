@@ -1,0 +1,342 @@
+/*
+Do not include this text, there are no comments in TI-85 BASIC.
+
+This program "XandOs" is my own TicTacToe clone.
+
+I typed this program up and used → as the character for the
+button that looks like "STO⊳"
+*/
+
+Lbl START
+ClLCD
+
+Disp "+---------+"
+Disp "!TICTACTOE!"
+Disp "+---------+"
+
+0→ShowStat
+
+Menu(1,"PLAY"PLAY,2,"",DEV,5,"QUIT",QUIT)
+
+Lbl DEV
+Disp "DEV menu"
+Disp "Enabled stats"
+Disp "Press DEL to force"
+Disp "game tick"
+1→ShowStat
+Pause
+
+Lbl PLAY
+1→cursorX
+1→cursorY
+" "→A1
+" "→B1
+" "→C1
+" "→A2
+" "→B2
+" "→C2
+" "→A3
+" "→B3
+" "→C3
+
+"X"→NextIcon
+"O"→PrevIcon
+1→GameLoop
+
+0→GameTick
+0→DrawTick
+
+Lbl DRAW
+While GameLoop==1
+GameTick+1→GameTick
+ClLCD
+If ShowStat==0
+Then
+Disp "Turn:"
+Else
+Disp "Turn:  G:    D:"
+End
+Disp ""
+Disp "         ! !"
+Disp "        -----"
+Disp "         ! !"
+Disp "        -----"
+Disp "         ! !"
+Outpt(3,09,A1)
+Outpt(3,11,B1)
+Outpt(3,13,C1)
+Outpt(5,09,A2)
+Outpt(5,11,B2)
+Outpt(5,13,C2)
+Outpt(7,09,A3)
+Outpt(7,11,B3)
+Outpt(7,13,C3)
+
+
+0→KEY
+1→DrawCur
+1→DrawLoop
+0→EnterKey
+While DrawLoop==1
+Lbl DRAWCUR
+DrawTick+1→DrawTick
+
+If cursorX≤0
+Then
+1→cursorX
+If cursorX≥4
+Then
+3→cursorX
+End
+If cursorY≤0
+Then
+1→cursorY
+If cursorY≥4
+Then
+3→cursorY
+End
+
+If cursorX==1
+Then
+If cursorY==1
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→A1
+PrevIcon→NextIcon
+A1→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(3,09,".")
+Else
+1→DrawCur
+Outpt(3,09,A1)
+End
+Else
+If cursorY==2
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→B1
+PrevIcon→NextIcon
+B1→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(3,11,".")
+Else
+1→DrawCur
+Outpt(3,11,B1)
+End
+Else
+If cursorY==3
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→C1
+PrevIcon→NextIcon
+C1→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(3,13,".")
+Else
+1→DrawCur
+Outpt(3,13,C1)
+End
+End
+End
+End
+Else
+If cursorX==2
+Then
+If cursorY==1
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→A2
+PrevIcon→NextIcon
+A2→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(5,09,".")
+Else
+1→DrawCur
+Outpt(5,09,A2)
+End
+Else
+If cursorY==2
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→B2
+PrevIcon→NextIcon
+B2→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(5,11,".")
+Else
+1→DrawCur
+Outpt(5,11,B2)
+End
+Else
+If cursorY==3
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→C2
+PrevIcon→NextIcon
+C2→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(5,13,".")
+Else
+1→DrawCur
+Outpt(5,13,C1)
+End
+End
+End
+End
+Else
+If cursorX==3
+Then
+If cursorY==1
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→A3
+PrevIcon→NextIcon
+A3→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(7,09,".")
+Else
+1→DrawCur
+Outpt(7,09,A3)
+End
+Else
+If cursorY==2
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→B3
+PrevIcon→NextIcon
+B3→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(7,11,".")
+Else
+1→DrawCur
+Outpt(7,11,B3)
+End
+Else
+If cursorY==3
+Then
+If EnterKey==1
+Then
+0→EnterKey
+NextIcon→C3
+PrevIcon→NextIcon
+C3→PrevIcon
+End
+If DrawCur==1
+Then
+0→DrawCur
+Outpt(7,13,".")
+Else
+1→DrawCur
+Outpt(7,13,C3)
+End
+End
+End
+End
+End
+End
+End
+
+Outpt(1,6,NextIcon)
+
+If ShowStat==1
+Then
+Outpt(1,10,GameTick)
+Outpt(1,16,DrawTick)
+End
+getKy→KEY
+
+If KEY==26
+Then
+cursorY+1→cursorY
+0→DrawLoop
+End
+If KEY==24
+Then
+cursorY-1→cursorY
+0→DrawLoop
+End
+If KEY==25
+Then
+cursorX-1→cursorX
+0→DrawLoop
+End
+If KEY==34
+Then
+cursorX+1→cursorX
+0→DrawLoop
+End
+
+If KEY==45
+Then
+" "→A1
+" "→B1
+" "→C1
+" "→A2
+" "→B2
+" "→C2
+" "→A3
+" "→B3
+" "→C3
+End
+
+If KEY==33
+Then
+0→DrawLoop
+End
+
+If KEY==22
+Then
+Goto QUIT
+End
+
+If KEY==105
+Then
+1→EnterKey
+End
+End
+End
+
+Lbl QUIT
+ClLCD
+Disp "See you next time..."
+Stop

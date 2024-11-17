@@ -1,0 +1,17 @@
+/*
+Do not include this text, there are no comments in TI-85 BASIC.
+
+This program "Test" is just me checking how to make vectors and
+matrices.
+
+I typed this program up and used → as the character for the
+button that looks like "STO⊳"
+*/
+
+[7,11]→VEC
+Disp VEC
+Disp VEC(1)
+
+[[0,1,0][1,0,1][0,1,0]]→MTRX
+Disp MTRX
+Disp MTRX(1,2)

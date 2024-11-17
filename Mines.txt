@@ -1,0 +1,66 @@
+/*
+Do not include this text, there are no comments in TI-85 BASIC.
+
+This program "Mines" is my own minesweeper clone on the TI-85.
+It is still a WIP sadly... but still looks cool.
+
+I typed this program up and used → as the character for the
+button that looks like "STO⊳"
+*/
+
+Lbl START
+ClLCD
+Disp "+------------+"
+Disp "!Mine Sweeper!"
+Disp "+------------+"
+
+Menu(1, "PLAY",PLAY,5,"QUIT",QUIT)
+
+Lbl PLAY
+ClLCD
+
+1→cursorX
+1→cursorY
+
+[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0][0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0][0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0][0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0][0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0][0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]→MAP
+
+[[1,1,2,9,2,9,3,2,1,0,0,0,0,0,0,0,0,0,0][1,9,2,1,2,2,9,9,1,0,0,0,0,0,0,0,0,0,0][1,1,1,0,0,1,2,2,1,0,0,0,0,0,0,0,0,0,0][0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0][0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0][0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]→MAP
+
+Outpt(1,1,"+")
+For(i,2,20,1)
+Outpt(1,i,"-")
+End
+Outpt(1,21,"+")
+For(i,2,7,1)
+Outpt(i,1,"!")
+Outpt(i,21,"!")
+End
+Outpt(8,1,"+")
+For(i,2,20,1)
+Outpt(8,i,"-")
+End
+Outpt(8,21,"+")
+
+
+
+For(i,1,6,1)
+For(j,1,19,1)
+If MAP(i,j)==0
+Then
+Outpt(i+1,j+1," ")
+Else
+If MAP(i,j)==9
+Then
+Outpt(i+1,j+1,"*")
+Else
+Outpt(i+1,j+1,MAP(i,j))
+End
+End
+End
+End
+Pause
+
+Lbl QUIT
+ClLCD
+Disp "See you next time..."
+Stop

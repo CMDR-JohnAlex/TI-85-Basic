@@ -1,0 +1,26 @@
+/*
+Do not include this text, there are no comments in TI-85 BASIC.
+
+This program "KeyScan" checks all keys to see what key is being
+pressed. This is useful since I have no idea what the key
+values are for all the buttons. The program displays the
+keycode for the first button it finds being pressed.
+
+I typed this program up and used → as the character for the
+button that looks like "STO⊳"
+*/
+
+ClLCD
+Disp "Press a key..."
+For(J,1,1000,1)
+End
+Disp "Scanning!"
+getKy→KEY
+For(i,1,500,1)
+If KEY==i
+Then
+Disp "The key pressed is:"
+Disp KEY
+Stop
+End
+End

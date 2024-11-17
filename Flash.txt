@@ -1,0 +1,17 @@
+/*
+Do not include this text, there are no comments in TI-85 BASIC.
+
+This program "FLASH" just draws a saved picture called TEST
+before looping a bit as a wait, then clearing the screen and
+"waiting" before repeating.
+*/
+
+DispG
+Lbl HERE
+RcPic TEST
+For(J,1,100,1)
+End
+ClDrw
+For(J,1,100,1)
+End
+Goto HERE
